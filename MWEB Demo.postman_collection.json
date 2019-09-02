@@ -1,0 +1,513 @@
+{
+	"info": {
+		"_postman_id": "8fa80a3b-8788-4b2c-a858-a2f6578d149c",
+		"name": "MWEB Demo",
+		"description": "Sample Rest API for MWEB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Users - Initial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "145c4319-a084-4000-8724-51e3c5c9a8ec",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"response must be valid and have no users\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(jsonData._embedded.users.length === 0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User - a",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df93820a-d032-43ea-8139-9bfaaddcc612",
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.status(\"Created\"); // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"a@mweb.co.za\",\n\t\"password\":\"a12345\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User - b",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37f9b29f-893d-45ba-b77f-d5e57f9318ce",
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.status(\"Created\"); // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"b@mweb.co.za\",\n\t\"password\":\"a67890\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "Add User - c",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c2b55150-830b-49d2-8028-7e2bd89deed0",
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.status(\"Created\"); // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"c@mweb.co.za\",\n\t\"password\":\"a87654\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce280194-2561-4c1a-928f-342395446c98",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"response must be valid and have no users\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(jsonData._embedded.users.length === 3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce280194-2561-4c1a-928f-342395446c98",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.test(\"response must be valid and have no users\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(jsonData._embedded.users.length === 3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				},
+				"description": "Get all users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Takelot Products",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhQG13ZWIuY28uemEiLCJpYXQiOjE1Njc0MDU0NjAsImV4cCI6MTU2NzQwOTA2MH0.-AvkAgkp1YzCWuAUnus0VucVSFB244hhtDCttHczy9A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/takealot/30765949",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"takealot",
+						"30765949"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product - a1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c2e340b-5ee0-4d5b-a5e6-cdb2f6e8d5f3",
+						"exec": [
+							"pm.test(\"response must be valid and have a body(String)\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(pm.response.text()).to.include(\"Product will be tracked\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"a@mweb.co.za\",\n\t\"plid\":\"30765949\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/trackedProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trackedProduct"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product - a2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56a9b43c-e2bd-45ad-acf9-c212abd4f7ae",
+						"exec": [
+							"pm.test(\"response must be valid and have a body(String)\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(pm.response.text()).to.include(\"Product will be tracked\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"c@mweb.co.za\",\n\t\"plid\":\"30765949\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/trackedProduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trackedProduct"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "List Tracked plid's - Intermediate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56a9b43c-e2bd-45ad-acf9-c212abd4f7ae",
+						"exec": [
+							"pm.test(\"response must be valid and have a body(String)\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/trackedProduct/a@mweb.co.za",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trackedProduct",
+						"a@mweb.co.za"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product - a1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c2e340b-5ee0-4d5b-a5e6-cdb2f6e8d5f3",
+						"exec": [
+							"pm.test(\"response must be valid and have a body(String)\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"     pm.expect(pm.response.text()).to.include(\"Product was removed\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/trackedProduct/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trackedProduct",
+						"1"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		},
+		{
+			"name": "List Tracked plid's - Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "56a9b43c-e2bd-45ad-acf9-c212abd4f7ae",
+						"exec": [
+							"pm.test(\"response must be valid and have a body(String)\", function () {",
+							"     pm.response.to.be.status(\"OK\");",
+							"     pm.response.to.be.withBody;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/trackedProduct/a@mweb.co.za",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"trackedProduct",
+						"a@mweb.co.za"
+					]
+				},
+				"description": "Add a User"
+			},
+			"response": []
+		}
+	]
+}
